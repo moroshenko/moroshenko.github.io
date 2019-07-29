@@ -1,0 +1,84 @@
+html, body {
+    width: 105px;
+}
+
+.fullscr {
+    width: 105px;
+}
+
+.chmod-btn {
+    margin: 5% auto;
+    padding: 4px;
+    text-align: center;
+    font-size: 1.5em;
+    cursor: default;
+    background-color: #EAEAC9;
+    border: burlywood;
+}
+
+.chmod-btn:hover {
+
+    background-color: burlywood;
+    cursor: move;
+}
+
+.button {
+
+    margin: 5% auto;
+    padding: 4px;
+    text-align: right;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.button:hover {
+
+    cursor: move;
+}
+
+.num {
+    border: aqua;
+    background: darkgray;
+}
+.math {
+    border: #00b1ff;
+    background: #00b1ff;
+
+}
+
+.math:hover {
+    border: #0a4bff;
+    background: #0a4bff;
+}
+
+.equal {
+    border: #00b1ff;
+    background: #0068ff;
+
+}
+
+.equal:hover {
+    border: #0a4bff;
+    background: #5a00ff;
+}
+
+.num:hover {
+    border: aquamarine;
+    background: gray;
+}
+
+.text {
+    background-color: #99f2ef;
+    width: 105px;
+
+    text-align: center;
+}
+
+
+.clear {
+    background-color: #FBFBC9;
+}
+
+.clear:hover {
+    background-color: #EAEAC9;
+}
