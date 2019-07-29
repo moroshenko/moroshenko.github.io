@@ -153,7 +153,7 @@ document.addEventListener("click", (e) => {
     else if (e.target.classList.contains("math")) {
         var choseButton = e.target.textContent;
         sign = PLUS_SIGN;
-        if(choseButton === "CE") clear();
+        if(choseButton === "C") clear();
 
         if(choseButton === "+") add();
         if(choseButton === "--") minus();
