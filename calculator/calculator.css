@@ -1,14 +1,12 @@
-html, body {
-    width: 105px;
-}
 
 .fullscr {
-    width: 105px;
+    width: 100%;
 }
 
 .chmod-btn {
-    margin: 5% auto;
+    margin: 5px auto;
     padding: 4px;
+    display: ruby;
     text-align: center;
     font-size: 1.5em;
     cursor: default;
@@ -19,22 +17,19 @@ html, body {
 .chmod-btn:hover {
 
     background-color: burlywood;
-    cursor: move;
 }
 
 .button {
 
-    margin: 5% auto;
+    
+    margin: 5px auto ;
     padding: 4px;
-    text-align: right;
+    text-align: center;
+    width: 25px;
     font-size: 1.5em;
     cursor: default;
 }
 
-.button:hover {
-
-    cursor: move;
-}
 
 .num {
     border: aqua;
@@ -49,6 +44,22 @@ html, body {
 .math:hover {
     border: #0a4bff;
     background: #0a4bff;
+}
+
+.spec {
+    border: #00ffbf;
+    background: #00ffbf;
+    margin: 5px auto ;
+    padding: 4px;
+    text-align: center;
+    width: 32.5px;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.spec:hover {
+    border: #009670;
+    background: #009670;
 }
 
 .equal {
@@ -69,7 +80,6 @@ html, body {
 
 .text {
     background-color: #99f2ef;
-    width: 105px;
 
     text-align: center;
 }
