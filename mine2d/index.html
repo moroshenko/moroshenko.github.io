@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        var x = canvas.width / 2;
+        var y = canvas.height / 2;
+
+        var block_x = canvas.width / 2;
+        var block_y = canvas.height / 2;
+
+        var steve_x = canvas.width / 2;
+        var steve_y = canvas.height / 2;
+
+        var steve_vector_x = 0;
+        var steve_vector_y = 0;
+
+        var dx = 1;
+        var dy = 0.5;
+
+        var block = 3;
+
+        var counter = 0;
+        function draw() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //ctx.beginPath();
+            drawBack();
+            drawBlock(block, block_x + 24, block_y - 12);
+            drawBlock(block, block_x + 0, block_y + 0);
+            drawBlock(block, block_x - 24, block_y + 12);
+
+
+            drawBlock(block, block_x + 48, block_y + 0);
+            drawBlock(block, block_x + 24, block_y + 12);
+            drawBlock(block, block_x - 0, block_y + 24);
+
+            drawBlock(block, block_x + 72, block_y + 12);
+            drawBlock(block, block_x + 48, block_y + 24);
+            drawBlock(block, block_x + 24, block_y + 36);
+
+
+            drawSteve(0, steve_x, steve_y);
+            //if(steve_vector_x >= orig_x/2&& steve_vector_y >=  orig_y/2) steveWalk();
+            if (counter > 50) {
+                dy = dy == 0.5 ? -0.5 : 0.5;
+                counter = 0;
+                //block = block == 1 ? 2 : 1;
+            }
+
+            //block_y -= dy;
+            counter++;
+        }
+
+
+        var stx;
+        var sty;
+
+        var orig_x;
+        var orig_y;
+
+        var counterWalk = 0;
+
+        function drawBack() {
+            var img = new Image();
+
+
+            img.src = 'img/back.jpeg';
+            ctx.drawImage(img,0,0);
+        }
+
+        function steveWalkHor(lor = true/*left-or-right. true - right false- left*/) {
+
+            steve_x += steve_vector_x / 10;
+            steve_y += steve_vector_y / 10;
+
+            steve_vector_x -= steve_vector_x / 10;
+            steve_vector_y -= steve_vector_y / 10;
+
+
+
+            counterWalk++;
+
+            if (counterWalk >= 25) {
+                counterWalk = 0;
+                isWalk = false;
+                
+                clearInterval(walk_loop);
+
+            }
+            else isWalk = true;
+
+
+        }
+
+        function drawBlock(blockId, xp, yp) {
+            var img = new Image();
+
+            /*img.onload = function(){
+                ctx.drawImage(img, x - img.width/2, y - img.height/2);
+            };*/
+
+            img.src = 'img/block' + blockId + '.png';
+            ctx.drawImage(img, xp - img.width / 2, yp - img.height / 2);
+        }
+
+        function drawSteve(blockId, xp, yp) {
+            var img = new Image();
+
+            /*img.onload = function(){
+                ctx.drawImage(img, x - img.width/2, y - img.height/2);
+            };*/
+
+            img.src = 'img/block' + blockId + '.png';
+            ctx.drawImage(img, xp - img.width / 2 - 3, yp - img.width * 2 - 5);
+        }
+
+
+        var isWalk = false;
+        function keyDownHandler(e) {
+            if (!isWalk) {
+                if (e.keyCode == 39) {
+                    steve_vector_x = 26;
+                    orig_x = steve_vector_x
+                    stx = steve_vector_x / 10;
+
+                    steve_vector_y = -13;
+                    orig_y = steve_vector_y;
+                    sty = steve_vector_y / 10;
+
+                    walk_loop = setInterval(steveWalkHor, 10);
+                }
+                else if (e.keyCode == 37) {
+                    steve_vector_x = -26;
+                    orig_x = steve_vector_x
+                    stx = steve_vector_x / 10;
+
+                    steve_vector_y = 13;
+                    orig_y = steve_vector_y;
+                    sty = steve_vector_y / 10;
+
+                    walk_loop = setInterval(function () { steveWalkHor(false) }, 10);
+                }
+                else if (e.keyCode == 38) {
+                    steve_vector_x = 26;
+                    orig_x = steve_vector_x
+                    stx = steve_vector_x / 10;
+
+                    steve_vector_y = 13;
+                    orig_y = steve_vector_y;
+                    sty = steve_vector_y / 10;
+
+                    walk_loop = setInterval(function () { steveWalkHor(false) }, 10);
+                }
+                else if (e.keyCode == 40) {
+                    steve_vector_x = -26;
+                    orig_x = steve_vector_x
+                    stx = steve_vector_x / 10;
+
+                    steve_vector_y = -13;
+                    orig_y = steve_vector_y;
+                    sty = steve_vector_y / 10;
+
+                    walk_loop = setInterval(function () { steveWalkHor(false) }, 10);
+                }
+            }
+        }
+
+        document.addEventListener("keydown", keyDownHandler, false);
+        setInterval(draw, 10);
+        var walk_loop;
+
+    </script>
+
+</body>
+
+</html>
